@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head> </head>
+
+  <body>
+    <button id="pay">Click Me</button>
+    <script>
+      var Razorpay = {
+        config: {
+          frame:
+            "https://api.razorpay.com/test/checkout.html?branch=feat/3rd-party-cookie-poc",
+        },
+      };
+    </script>
+    <script src="https://betacdn.np.razorpay.in/checkout/builds/branch-builds/feat/3rd-party-cookie-poc/v1/checkout.js"></script>
+    <script>
+      var options = {
+        key: "rzp_live_6SEf9SiL78Sf6Z",
+        remember_customer: true,
+        amount: 1000000,
+        handler: (resp) => alert(resp.razorpay_payment_id),
+      };
+  
+      const rzp = new Razorpay(options);
+      document.getElementById("pay").addEventListener("click", () => {
+        rzp.open();
+      });
+    </script>
+  </body>
+</html>
